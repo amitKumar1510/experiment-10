@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>ChangePass Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col col-md-4 m-auto">
+        <h1 class="text-primary text-center">Change Password page</h1>
+    <form class="border border-primary p-4 rounded">
+      <div class="form-group">
+        <label for="loginEmail">Email address</label>
+        <input type="email" class="form-control" id="loginEmail" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="oldloginPassword">Old Password</label>
+        <input type="password" class="form-control" id="oldloginPassword" placeholder="Old Password">
+      </div>
+      <div class="form-group">
+        <label for="newloginPassword">New Password</label>
+        <input type="password" class="form-control" id="newloginPassword" placeholder=" New Password">
+      </div>
+      <div class="form-group">
+        <label for="confloginPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confloginPassword" placeholder="Confirm Password">
+      </div>
+      <button type="submit" class="btn btn-primary mx-4" id="btn1">Change Password</button>
+      <button type="button"class="btn btn-primary" id="btn2">Back</button>
+
+    </form>
+  </div>         
+</div>
+</div>
+<script>
+  $(document).ready(function(){
+    $('#btn1').click(function(){
+      var email=$('#loginEmail').val();
+      var pass1=$('#oldloginPassword').val();
+      var pass2=$('#newloginPassword').val();
+      var pass3=$('#confloginPassword').val();
+      var emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var PassRegex = /^[a-zA-Z0-9!$#%]+$/;
+      if(!emailRegex.test(email)){
+        alert("Email is not vaild!");
+      }
+      else if(!PassRegex.test(pass1) || pass1.length > 10){
+        alert("Old Password is not in correct format or not grater than 10!");
+      }
+      else if(!PassRegex.test(pass2) || pass2.length > 10){
+        alert("New Password is not in correct format or not grater than 10!");
+      }
+      else if(pass2!=pass3){
+        alert("Confirm New Password is not match !");
+      }
+      else{
+        alert("Password Changed Successfully.");
+      }
+    });
+    $('#btn2').click(function() {
+        window.location.href = "EXP-5.html";
+      });
+  });
+</script>
+</body>
+</html>
